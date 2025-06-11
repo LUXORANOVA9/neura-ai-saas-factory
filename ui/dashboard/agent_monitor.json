@@ -1,0 +1,272 @@
+{
+  "pages": [
+    {
+      "name": "Agent Monitor",
+      "slug": "agent-monitor",
+      "layouts": [
+        {
+          "dsl": {
+            "widgetName": "MainContainer",
+            "backgroundColor": "none",
+            "rightColumn": 1224,
+            "snapColumns": 64,
+            "detachFromLayout": true,
+            "widgetId": "0",
+            "topRow": 0,
+            "bottomRow": 880,
+            "containerStyle": "none",
+            "snapRows": 88,
+            "parentRowSpace": 1,
+            "type": "CANVAS_WIDGET",
+            "canExtend": true,
+            "dynamicBindingPathList": [],
+            "version": 1,
+            "minHeight": 880,
+            "parentColumnSpace": 1,
+            "leftColumn": 0,
+            "children": [
+              {
+                "widgetName": "Header",
+                "backgroundColor": "#FFFFFF",
+                "rightColumn": 64,
+                "widgetId": "header",
+                "topRow": 0,
+                "bottomRow": 8,
+                "parentRowSpace": 10,
+                "isVisible": true,
+                "type": "CONTAINER_WIDGET",
+                "parentColumnSpace": 19.125,
+                "leftColumn": 0,
+                "children": [
+                  {
+                    "widgetName": "Title",
+                    "displayName": "Text",
+                    "iconSVG": "/static/media/icon.97c59b52.svg",
+                    "topRow": 1,
+                    "bottomRow": 5,
+                    "parentRowSpace": 10,
+                    "type": "TEXT_WIDGET",
+                    "hideCard": false,
+                    "parentColumnSpace": 19.125,
+                    "leftColumn": 1,
+                    "text": "NEURA by LUXORANOVA - Agent Monitor",
+                    "key": "title",
+                    "rightColumn": 61,
+                    "textAlign": "LEFT",
+                    "widgetId": "title",
+                    "isVisible": true,
+                    "fontStyle": "BOLD",
+                    "textColor": "#231F20",
+                    "version": 1,
+                    "parentId": "header",
+                    "renderMode": "CANVAS",
+                    "isLoading": false,
+                    "fontSize": "HEADING1"
+                  }
+                ]
+              },
+              {
+                "widgetName": "AgentStatus",
+                "backgroundColor": "#FFFFFF",
+                "rightColumn": 64,
+                "widgetId": "agent_status",
+                "topRow": 9,
+                "bottomRow": 29,
+                "parentRowSpace": 10,
+                "isVisible": true,
+                "type": "CONTAINER_WIDGET",
+                "parentColumnSpace": 19.125,
+                "leftColumn": 0,
+                "children": [
+                  {
+                    "widgetName": "AgentTable",
+                    "defaultPageSize": 10,
+                    "columnOrder": [
+                      "agent_id",
+                      "name",
+                      "status",
+                      "last_active",
+                      "tasks_completed"
+                    ],
+                    "aliasMap": {},
+                    "topRow": 1,
+                    "bottomRow": 19,
+                    "parentRowSpace": 10,
+                    "type": "TABLE_WIDGET",
+                    "parentColumnSpace": 19.125,
+                    "leftColumn": 1,
+                    "dynamicBindingPathList": [
+                      {
+                        "key": "tableData"
+                      }
+                    ],
+                    "rightColumn": 61,
+                    "textSize": "PARAGRAPH",
+                    "widgetId": "agent_table",
+                    "isVisible": true,
+                    "label": "Agent Status",
+                    "searchKey": "",
+                    "version": 3,
+                    "totalRecordsCount": 0,
+                    "parentId": "agent_status",
+                    "renderMode": "CANVAS",
+                    "isLoading": false,
+                    "horizontalAlignment": "LEFT",
+                    "tableData": "{{get_agents.data}}",
+                    "verticalAlignment": "CENTER",
+                    "columnWidthMap": {
+                      "task": 245,
+                      "step": 62,
+                      "status": 75
+                    }
+                  }
+                ]
+              },
+              {
+                "widgetName": "TaskMonitor",
+                "backgroundColor": "#FFFFFF",
+                "rightColumn": 64,
+                "widgetId": "task_monitor",
+                "topRow": 30,
+                "bottomRow": 50,
+                "parentRowSpace": 10,
+                "isVisible": true,
+                "type": "CONTAINER_WIDGET",
+                "parentColumnSpace": 19.125,
+                "leftColumn": 0,
+                "children": [
+                  {
+                    "widgetName": "TaskTable",
+                    "defaultPageSize": 10,
+                    "columnOrder": [
+                      "task_id",
+                      "description",
+                      "agent",
+                      "status",
+                      "created_at",
+                      "completed_at"
+                    ],
+                    "aliasMap": {},
+                    "topRow": 1,
+                    "bottomRow": 19,
+                    "parentRowSpace": 10,
+                    "type": "TABLE_WIDGET",
+                    "parentColumnSpace": 19.125,
+                    "leftColumn": 1,
+                    "dynamicBindingPathList": [
+                      {
+                        "key": "tableData"
+                      }
+                    ],
+                    "rightColumn": 61,
+                    "textSize": "PARAGRAPH",
+                    "widgetId": "task_table",
+                    "isVisible": true,
+                    "label": "Active Tasks",
+                    "searchKey": "",
+                    "version": 3,
+                    "totalRecordsCount": 0,
+                    "parentId": "task_monitor",
+                    "renderMode": "CANVAS",
+                    "isLoading": false,
+                    "horizontalAlignment": "LEFT",
+                    "tableData": "{{get_tasks.data}}",
+                    "verticalAlignment": "CENTER",
+                    "columnWidthMap": {
+                      "task": 245,
+                      "step": 62,
+                      "status": 75
+                    }
+                  }
+                ]
+              },
+              {
+                "widgetName": "SystemMetrics",
+                "backgroundColor": "#FFFFFF",
+                "rightColumn": 64,
+                "widgetId": "system_metrics",
+                "topRow": 51,
+                "bottomRow": 71,
+                "parentRowSpace": 10,
+                "isVisible": true,
+                "type": "CONTAINER_WIDGET",
+                "parentColumnSpace": 19.125,
+                "leftColumn": 0,
+                "children": [
+                  {
+                    "widgetName": "MetricsChart",
+                    "rightColumn": 61,
+                    "widgetId": "metrics_chart",
+                    "topRow": 1,
+                    "bottomRow": 19,
+                    "parentRowSpace": 10,
+                    "type": "CHART_WIDGET",
+                    "parentColumnSpace": 19.125,
+                    "leftColumn": 1,
+                    "dynamicBindingPathList": [
+                      {
+                        "key": "chartData"
+                      }
+                    ],
+                    "chartData": "{{get_metrics.data}}",
+                    "chartName": "System Metrics",
+                    "chartType": "LINE_CHART",
+                    "isVisible": true,
+                    "version": 1,
+                    "parentId": "system_metrics",
+                    "renderMode": "CANVAS",
+                    "isLoading": false
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "id": "get_agents",
+      "name": "get_agents",
+      "pluginType": "API",
+      "actionConfiguration": {
+        "timeoutInMillisecond": 10000,
+        "url": "http://localhost:8000/agents",
+        "headers": [],
+        "encodeParamsToggle": true,
+        "queryParameters": [],
+        "bodyFormData": [],
+        "httpMethod": "GET"
+      }
+    },
+    {
+      "id": "get_tasks",
+      "name": "get_tasks",
+      "pluginType": "API",
+      "actionConfiguration": {
+        "timeoutInMillisecond": 10000,
+        "url": "http://localhost:8000/tasks",
+        "headers": [],
+        "encodeParamsToggle": true,
+        "queryParameters": [],
+        "bodyFormData": [],
+        "httpMethod": "GET"
+      }
+    },
+    {
+      "id": "get_metrics",
+      "name": "get_metrics",
+      "pluginType": "API",
+      "actionConfiguration": {
+        "timeoutInMillisecond": 10000,
+        "url": "http://localhost:8000/metrics",
+        "headers": [],
+        "encodeParamsToggle": true,
+        "queryParameters": [],
+        "bodyFormData": [],
+        "httpMethod": "GET"
+      }
+    }
+  ]
+}
