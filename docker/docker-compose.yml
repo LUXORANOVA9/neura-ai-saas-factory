@@ -1,0 +1,118 @@
+version: '3.8'
+
+services:
+  # Core AI Services
+  ollama:
+    image: ollama/ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    restart: unless-stopped
+
+  openwebui:
+    image: ghcr.io/open-webui/open-webui:main
+    ports:
+      - "3000:8080"
+    environment:
+      - OLLAMA_BASE_URL=http://ollama:11434
+    depends_on:
+      - ollama
+    restart: unless-stopped
+
+  # Automation & Orchestration
+  n8n:
+    image: n8nio/n8n
+    ports:
+      - "5678:5678"
+    environment:
+      - N8N_HOST=n8n
+      - N8N_PORT=5678
+      - N8N_PROTOCOL=http
+      - N8N_USER_FOLDER=/home/node/.n8n
+    volumes:
+      - n8n_data:/home/node/.n8n
+    restart: unless-stopped
+
+  flowise:
+    image: flowiseai/flowise
+    ports:
+      - "3001:3001"
+    volumes:
+      - flowise_data:/root/.flowise
+    restart: unless-stopped
+
+  # Dashboard & Monitoring
+  appsmith:
+    image: appsmith/appsmith-ce
+    ports:
+      - "80:80"
+    volumes:
+      - appsmith_data:/appsmith-stacks
+    restart: unless-stopped
+
+  uptime-kuma:
+    image: louislam/uptime-kuma
+    ports:
+      - "3002:3001"
+    volumes:
+      - uptime_kuma_data:/app/data
+    restart: unless-stopped
+
+  # Database & Vector Store
+  chromadb:
+    image: chromadb/chroma
+    ports:
+      - "8001:8000"
+    volumes:
+      - chromadb_data:/chroma/data
+    restart: unless-stopped
+
+  # Agent Systems
+  superagi:
+    image: superagi/superagi
+    ports:
+      - "9000:9000"
+    volumes:
+      - superagi_data:/superagi/data
+    restart: unless-stopped
+
+  # Logging & Monitoring
+  promtail:
+    image: grafana/promtail
+    ports:
+      - "1514:1514"
+    volumes:
+      - /var/log:/var/log
+    command: -config.file=/etc/promtail/config.yml
+    restart: unless-stopped
+
+  loki:
+    image: grafana/loki
+    ports:
+      - "3100:3100"
+    command: -config.file=/etc/loki/local-config.yaml
+    volumes:
+      - loki_data:/loki
+    restart: unless-stopped
+
+  grafana:
+    image: grafana/grafana
+    ports:
+      - "3003:3000"
+    volumes:
+      - grafana_data:/var/lib/grafana
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=luxoranova
+    restart: unless-stopped
+
+volumes:
+  ollama_data:
+  n8n_data:
+  flowise_data:
+  appsmith_data:
+  uptime_kuma_data:
+  chromadb_data:
+  superagi_data:
+  loki_data:
+  grafana_data:
