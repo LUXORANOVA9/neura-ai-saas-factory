@@ -157,6 +157,24 @@ pytest tests/
 
 MIT License - See LICENSE file for details.
 
+## Open Source Development Tools
+
+The following table summarizes popular open source projects that can help
+enhance or extend NEURA's capabilities. Most of these tools are cloud-free,
+can run locally, and are jailbreakable, making them flexible additions to a
+developer workflow.
+
+| Tool | Key Superpower | Origin | Cloud-Free | Jailbreakable | VS Cursor |
+| --- | --- | --- | --- | --- | --- |
+| OpenDevin | Full chat-to-code repo | Global | Yes | Yes | 🔥 |
+| Smol AI | Local codegen, chain models | Indie | Yes | Yes | 🔥 |
+| MetaGPT | Full AI dev team, multi-agent | China | Yes | Yes | 🔥 |
+| Open Interpreter | Full CLI/Terminal/Editor | Global | Yes | Yes | 🔥 |
+| Qwen/DeepSeek | Chinese LLMs, code-optimized | China | Yes | Yes | 🔥 |
+| XAgent | Full-stack, multi-agent, plugins | China | Yes | Yes | 🔥 |
+| TabbyML | Local code suggestions | US | Yes | Yes | 🔥 |
+| DeepAgent | Hack automation, not just dev | China | Yes | Yes | 🔥 |
+
 ## Support
 
 For support, email support@luxoranova.ai or join our Discord community.
