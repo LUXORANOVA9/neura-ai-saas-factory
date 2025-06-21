@@ -1,0 +1,414 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEURA AI SaaS Factory - Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-bg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .card-hover { transition: all 0.3s ease; }
+        .card-hover:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm border-b">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <h1 class="text-2xl font-bold text-gray-900">NEURA AI</h1>
+                    </div>
+                    <div class="hidden md:ml-6 md:flex md:space-x-8">
+                        <a href="#dashboard" class="text-blue-600 border-b-2 border-blue-600 px-1 pt-1 pb-4 text-sm font-medium">Dashboard</a>
+                        <a href="#services" class="text-gray-500 hover:text-gray-700 px-1 pt-1 pb-4 text-sm font-medium">Services</a>
+                        <a href="#billing" class="text-gray-500 hover:text-gray-700 px-1 pt-1 pb-4 text-sm font-medium">Billing</a>
+                        <a href="#api-keys" class="text-gray-500 hover:text-gray-700 px-1 pt-1 pb-4 text-sm font-medium">API Keys</a>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <span class="text-sm text-gray-500" id="user-email">Loading...</span>
+                    <button class="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-700">
+                        Upgrade Plan
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+        <!-- Stats Overview -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+            <div class="bg-white p-6 rounded-lg shadow card-hover">
+                <div class="flex items-center">
+                    <div class="p-2 bg-blue-100 rounded-lg">
+                        <i class="fas fa-chart-line text-blue-600"></i>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-sm font-medium text-gray-500">API Calls Today</p>
+                        <p class="text-2xl font-semibold text-gray-900" id="api-calls-today">0</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white p-6 rounded-lg shadow card-hover">
+                <div class="flex items-center">
+                    <div class="p-2 bg-green-100 rounded-lg">
+                        <i class="fas fa-dollar-sign text-green-600"></i>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-sm font-medium text-gray-500">Monthly Revenue</p>
+                        <p class="text-2xl font-semibold text-gray-900" id="monthly-revenue">$0</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white p-6 rounded-lg shadow card-hover">
+                <div class="flex items-center">
+                    <div class="p-2 bg-purple-100 rounded-lg">
+                        <i class="fas fa-users text-purple-600"></i>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-sm font-medium text-gray-500">Active Users</p>
+                        <p class="text-2xl font-semibold text-gray-900" id="active-users">1</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white p-6 rounded-lg shadow card-hover">
+                <div class="flex items-center">
+                    <div class="p-2 bg-yellow-100 rounded-lg">
+                        <i class="fas fa-clock text-yellow-600"></i>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-sm font-medium text-gray-500">Avg Response Time</p>
+                        <p class="text-2xl font-semibold text-gray-900" id="avg-response">0ms</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- AI Services Grid -->
+        <div class="mb-8">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6">AI Services</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Resume Reviewer -->
+                <div class="bg-white p-6 rounded-lg shadow card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="p-3 bg-blue-100 rounded-lg">
+                            <i class="fas fa-file-alt text-blue-600 text-xl"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-lg font-semibold">Resume Reviewer</h3>
+                            <p class="text-sm text-gray-500">AI-powered resume analysis</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">Get detailed feedback and optimization suggestions for resumes.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm text-gray-500">From $9.99</span>
+                        <button class="bg-blue-600 text-white px-4 py-2 rounded text-sm hover:bg-blue-700" onclick="openServiceModal('resume')">
+                            Try Now
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Landing Page Generator -->
+                <div class="bg-white p-6 rounded-lg shadow card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="p-3 bg-green-100 rounded-lg">
+                            <i class="fas fa-globe text-green-600 text-xl"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-lg font-semibold">Landing Page Generator</h3>
+                            <p class="text-sm text-gray-500">Create stunning landing pages</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">Generate professional landing pages with AI in minutes.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm text-gray-500">From $29.99</span>
+                        <button class="bg-green-600 text-white px-4 py-2 rounded text-sm hover:bg-green-700" onclick="openServiceModal('landing')">
+                            Try Now
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Name Generator -->
+                <div class="bg-white p-6 rounded-lg shadow card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="p-3 bg-purple-100 rounded-lg">
+                            <i class="fas fa-lightbulb text-purple-600 text-xl"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-lg font-semibold">Name Generator</h3>
+                            <p class="text-sm text-gray-500">Brand & business names</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">Generate creative business and brand names with AI.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm text-gray-500">From $19.99</span>
+                        <button class="bg-purple-600 text-white px-4 py-2 rounded text-sm hover:bg-purple-700" onclick="openServiceModal('names')">
+                            Try Now
+                        </button>
+                    </div>
+                </div>
+
+                <!-- SEO Audit -->
+                <div class="bg-white p-6 rounded-lg shadow card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="p-3 bg-red-100 rounded-lg">
+                            <i class="fas fa-search text-red-600 text-xl"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-lg font-semibold">SEO Audit Bot</h3>
+                            <p class="text-sm text-gray-500">Website optimization</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">Comprehensive SEO analysis and recommendations.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm text-gray-500">From $29.99</span>
+                        <button class="bg-red-600 text-white px-4 py-2 rounded text-sm hover:bg-red-700" onclick="openServiceModal('seo')">
+                            Try Now
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Logo Maker -->
+                <div class="bg-white p-6 rounded-lg shadow card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="p-3 bg-yellow-100 rounded-lg">
+                            <i class="fas fa-palette text-yellow-600 text-xl"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-lg font-semibold">Logo Maker</h3>
+                            <p class="text-sm text-gray-500">AI-generated logos</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">Create professional logos with AI assistance.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm text-gray-500">From $39.99</span>
+                        <button class="bg-yellow-600 text-white px-4 py-2 rounded text-sm hover:bg-yellow-700" onclick="openServiceModal('logo')">
+                            Try Now
+                        </button>
+                    </div>
+                </div>
+
+                <!-- API Access -->
+                <div class="bg-white p-6 rounded-lg shadow card-hover border-2 border-blue-200">
+                    <div class="flex items-center mb-4">
+                        <div class="p-3 bg-blue-100 rounded-lg">
+                            <i class="fas fa-code text-blue-600 text-xl"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-lg font-semibold">API Access</h3>
+                            <p class="text-sm text-gray-500">Direct API integration</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">Integrate all services directly into your applications.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm text-gray-500">Subscription based</span>
+                        <button class="bg-blue-600 text-white px-4 py-2 rounded text-sm hover:bg-blue-700" onclick="showApiDocs()">
+                            View Docs
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Usage & Billing -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <!-- Usage Stats -->
+            <div class="bg-white p-6 rounded-lg shadow">
+                <h3 class="text-lg font-semibold mb-4">Usage Statistics</h3>
+                <div class="space-y-4">
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-600">API Calls This Month</span>
+                        <span class="font-semibold" id="monthly-calls">0 / 100</span>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-2">
+                        <div class="bg-blue-600 h-2 rounded-full" style="width: 0%" id="usage-bar"></div>
+                    </div>
+                    <div class="text-sm text-gray-500">
+                        <span id="remaining-calls">100</span> calls remaining this month
+                    </div>
+                </div>
+            </div>
+
+            <!-- Current Plan -->
+            <div class="bg-white p-6 rounded-lg shadow">
+                <h3 class="text-lg font-semibold mb-4">Current Plan</h3>
+                <div class="space-y-4">
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-600">Plan</span>
+                        <span class="font-semibold text-blue-600" id="current-plan">Free</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-600">Monthly Limit</span>
+                        <span class="font-semibold" id="plan-limit">100 calls</span>
+                    </div>
+                    <button class="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-2 rounded-lg font-medium hover:from-blue-700 hover:to-purple-700">
+                        Upgrade Plan
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Service Modal -->
+    <div id="serviceModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="bg-white rounded-lg max-w-md w-full p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-lg font-semibold" id="modalTitle">Service</h3>
+                    <button onclick="closeServiceModal()" class="text-gray-400 hover:text-gray-600">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div id="modalContent">
+                    <!-- Dynamic content will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // API Configuration
+        const API_BASE = 'http://localhost:8000';
+        let currentUser = null;
+        let apiKey = localStorage.getItem('neura_api_key');
+
+        // Initialize dashboard
+        document.addEventListener('DOMContentLoaded', function() {
+            if (!apiKey) {
+                showRegistrationForm();
+            } else {
+                loadDashboard();
+            }
+        });
+
+        // Load dashboard data
+        async function loadDashboard() {
+            try {
+                const response = await fetch(`${API_BASE}/analytics/dashboard`, {
+                    headers: {
+                        'Authorization': `Bearer ${apiKey}`
+                    }
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    updateDashboard(data);
+                } else {
+                    showRegistrationForm();
+                }
+            } catch (error) {
+                console.error('Error loading dashboard:', error);
+                showRegistrationForm();
+            }
+        }
+
+        // Update dashboard with data
+        function updateDashboard(data) {
+            if (data.usage) {
+                document.getElementById('api-calls-today').textContent = data.usage.total_requests || 0;
+                document.getElementById('avg-response').textContent = `${data.usage.avg_response_time || 0}ms`;
+            }
+            
+            if (data.subscription) {
+                document.getElementById('current-plan').textContent = data.subscription.plan_id || 'Free';
+                const planDetails = data.subscription.plan_details;
+                if (planDetails) {
+                    document.getElementById('plan-limit').textContent = `${planDetails.requests_per_month} calls`;
+                }
+            }
+        }
+
+        // Show registration form
+        function showRegistrationForm() {
+            const email = prompt('Enter your email to get started:');
+            const password = prompt('Create a password:');
+            
+            if (email && password) {
+                registerUser(email, password);
+            }
+        }
+
+        // Register new user
+        async function registerUser(email, password) {
+            try {
+                const response = await fetch(`${API_BASE}/auth/register`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email, password })
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    apiKey = data.api_key;
+                    localStorage.setItem('neura_api_key', apiKey);
+                    document.getElementById('user-email').textContent = email;
+                    loadDashboard();
+                    alert('Registration successful! Your API key has been generated.');
+                } else {
+                    const error = await response.json();
+                    alert(`Registration failed: ${error.detail}`);
+                }
+            } catch (error) {
+                console.error('Registration error:', error);
+                alert('Registration failed. Please try again.');
+            }
+        }
+
+        // Open service modal
+        function openServiceModal(service) {
+            document.getElementById('serviceModal').classList.remove('hidden');
+            
+            const modalTitle = document.getElementById('modalTitle');
+            const modalContent = document.getElementById('modalContent');
+            
+            switch(service) {
+                case 'resume':
+                    modalTitle.textContent = 'Resume Reviewer';
+                    modalContent.innerHTML = `
+                        <textarea class="w-full h-32 p-3 border rounded-lg mb-4" placeholder="Paste your resume text here..."></textarea>
+                        <textarea class="w-full h-20 p-3 border rounded-lg mb-4" placeholder="Job description (optional)..."></textarea>
+                        <button class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700">
+                            Analyze Resume ($9.99)
+                        </button>
+                    `;
+                    break;
+                case 'landing':
+                    modalTitle.textContent = 'Landing Page Generator';
+                    modalContent.innerHTML = `
+                        <input type="text" class="w-full p-3 border rounded-lg mb-4" placeholder="Business name">
+                        <input type="text" class="w-full p-3 border rounded-lg mb-4" placeholder="Industry">
+                        <input type="text" class="w-full p-3 border rounded-lg mb-4" placeholder="Target audience">
+                        <textarea class="w-full h-20 p-3 border rounded-lg mb-4" placeholder="Key benefits (one per line)"></textarea>
+                        <button class="w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-700">
+                            Generate Page ($29.99)
+                        </button>
+                    `;
+                    break;
+                // Add other service modals...
+            }
+        }
+
+        // Close service modal
+        function closeServiceModal() {
+            document.getElementById('serviceModal').classList.add('hidden');
+        }
+
+        // Show API documentation
+        function showApiDocs() {
+            window.open(`${API_BASE}/docs`, '_blank');
+        }
+    </script>
+</body>
+</html>
